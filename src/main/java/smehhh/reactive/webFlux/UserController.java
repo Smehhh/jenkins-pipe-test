@@ -26,7 +26,7 @@ public class UserController {
 
     @PostMapping("/login")
     public Mono<ResponseEntity> login(ServerWebExchange exchange) {
-        System.out.println("in login");
+        
         return exchange.getFormData()
                 .flatMap(cred ->
                         userService.findByUsername(cred.getFirst("username"))
