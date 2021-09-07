@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('JDK11') {
+            tools {
+                jdk "JDK11"
+            }
+            steps {
+                sh "java --version"
+                sh "echo $JAVA_HOME"
+            }
+        }
+
+        stage('Build') {
+            tools {
+                jdk "JDK11"
+            }
+            steps {
+                script {
+                    sh "chmod +x ./gradlew"
+                    sh "./gradlew clean build -p webFlux"
+                }
+            }
+        }
+    }
+
+}
