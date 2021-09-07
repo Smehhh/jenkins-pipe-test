@@ -8,10 +8,9 @@ pipeline {
                 jdk
             }
             steps {
-                script {
-                    sh "chmod +x ./gradlew"
-                    sh "./gradlew clean build -p webFlux"
-                }
+                withGradle {
+                    sh './gradlew build'
+                  }
             }
         }
     }
