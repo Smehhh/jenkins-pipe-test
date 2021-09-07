@@ -40,7 +40,7 @@ public class JwtUtil {
     public String genToken(User user) {
         HashMap<String, Object> claims = new HashMap<>();
         claims.put("role", List.of(user.getRole()));
-        Long exp = Long.parseLong(expiration);
+        long exp = Long.parseLong(expiration);
         Date creationDate = new Date();
         Date expDate = new Date(creationDate.getTime() + exp * 1000);
         return Jwts.builder()
