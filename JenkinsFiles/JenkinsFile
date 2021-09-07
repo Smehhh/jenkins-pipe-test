@@ -4,9 +4,6 @@ pipeline {
     stages {
 
         stage('Build') {
-            tools {
-                jdk
-            }
             steps {
                 withGradle {
                     sh './gradlew build'
